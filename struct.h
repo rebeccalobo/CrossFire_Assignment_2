@@ -10,7 +10,8 @@ struct player
 	int  intelligence;
 	int  strength;
 	int  magic;
-	int luck_and_dex;
+	int luck;
+	int dexterity;
 
 }players[7];
 
