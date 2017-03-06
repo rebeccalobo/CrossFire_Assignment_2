@@ -18,14 +18,16 @@ struct player{
 	enum slottype type;
 	int  slotNum;
 	int  lifepts;
+	int capabilities;
 	int  intelligence;
 	int  strength;
 	int  magic;
-	int luck_and_dex;
+	int luck;
+	int dexterity;
+	int playersize;
 
-}players[7];
+}players[10];
 
 
 
 #endif /* relates to STRUCT_H */
-
