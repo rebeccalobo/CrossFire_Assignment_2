@@ -1,8 +1,12 @@
+#ifndef CAPABILITIES_H
+#define CAPABILITIES_H
+
 #include <stdio.h>
 #include <struct.h>
 #include "struct.h"
 #include <stdlib.h>
 #include <time.h>
+#include "slots.h"
 
 void capabilities(int count){
 		struct players p;
@@ -100,6 +104,27 @@ void capabilities(int count){
                     }
                 }
             }
+	
+	
+		while(players[count].type == Hill){
+			if(player[count].dexterity < 50){
+				players[count].strength -= 10;
+			}
+			else if(player[count].dexterity >= 60){
+			players[count].strength += 10;
+			}
+		}
+		while(players[count].type == City){
+			if(player[count].intelligence > 60){
+			players[count].magic += 10;
+			}
+			else if(player[count].intelligence <= 50){
+				player[count].dexterity -= 10;
+			}
+				
+		}
+
+		
 
         printf("Player %d \n", count+1);
         printf("Dexterity: %d \n", players[count].dexterity);
@@ -110,3 +135,5 @@ void capabilities(int count){
         printf("Total Stats: %d \n", players[count].capabilities);
         count++;
 }
+
+#endif
