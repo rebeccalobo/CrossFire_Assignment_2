@@ -1,8 +1,6 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-
-
 enum playerclass{
 	Elf, Human, Ogre, Wizard
 };
@@ -25,8 +23,8 @@ struct player{
 	int luck;
 	int dexterity;
 	int playersize;
-
-}players[10];
+	int distance;
+}players[7];
 
 
 

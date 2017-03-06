@@ -7,111 +7,135 @@
 #include <time.h>
 #include "slot.h"
 
-void capabilities(int i){
-	
-    int rerun=0;
-    int luckIntcheck=0;
-    srand(time(NULL));
+void elf(int count);
+void human(int count);
+void ogre(int count);
+void wizard(int count);
 
-    //Elf
-    if(players[i].class == 1){
-    	while(rerun<1){
-	    //dexterity
-    	    players[i].dexterity = (rand() % 101);
-    	    //intelligence
-    	    players[i].intelligence = (rand() % 31)+70;
-            //luck
-    	    players[i].luck = (rand() % 41)+60;
-    	    //magic
-    	    players[i].magic = (rand() % 29)+51;
-    	    //strength
-    	    players[i].strength = (rand() % 51);
-		
-            players[i].capabilities = players[i].dexterity + players[i].intelligence + players[i].luck + players[i].magic + players[i].strength;
-		
-	    if(players[i].capabilities>0){
-		    rerun+=1;
-    		}
-	}
-    }
+void capabilities(int count){
+	srand(time(NULL));
+    
+	//Elf
+		if(players[count].class == 1){
+			elf(count);
+		}
 
-    //Human
-    else if(players[i].class == 2){
-    	while(rerun<1){
-	    //dexterity
-    	    players[i].dexterity = (rand() % 101);
-            //intelligence
-            players[i].intelligence = (rand() % 101);
-            //luck
-            players[i].luck = (rand() % 101);
-            //magic
-            players[i].magic = (rand() % 101);
-            //strength
-            players[i].strength = (rand() % 101);
+	//Human
+		else if(players[count].class == 2){
+			human(count);
+		}
 
-            players[i].capabilities = players[i].dexterity + players[i].intelligence + players[i].luck + players[i].magic + players[i].strength;
+	//Ogre
+		else if(players[count].class == 3){
+			ogre(count);
+		}
 
-            if(players[i].capabilities > 0 && players[i].capabilities < 300){
-            	rerun+=1;
-            }
-    	}
-    }
+	//Wizard
+		else{
+			wizard(count);
+		}
 
-    //Ogre
-    else if(players[i].class == 3){
-    	while(rerun<1){
-    	    //dexterity
-            players[i].dexterity = (rand() % 21)+80;
-            //intelligence
-            players[i].intelligence = (rand() % 21);
-            //luck
-            players[i].luck = (rand() % 100)+80;
-            //magic
-            players[i].magic = 0;
-            //strength
-            players[i].strength = (rand() % 101);
-
-            players[i].capabilities = players[i].dexterity + players[i].intelligence + players[i].luck + players[i].magic + players[i].strength;
-
-            luckIntcheck= players[i].intelligence + players[i].luck;
-
-            if(players[i].capabilities > 0 && luckIntcheck < 51){
-            	rerun+=1;
-            }
-    	}
-    }
-
-    //Wizard
-    else{
-    	while(rerun<1){
-		//dexterity
-    		players[i].dexterity = (rand() % 101);
-    		//intelligence
-    		players[i].intelligence = (rand() % 10)+90;
-    		//luck
-    		players[i].luck = (rand() % 50)+50;
-    		//magic
-    		players[i].magic = (rand() % 20)+80;
-    		//strength
-    		players[i].strength = (rand() % 20);
-
-    		players[i].capabilities = players[i].dexterity + players[i].intelligence + players[i].luck + players[i].magic + players[i].strength;
-
-    		if(players[i].capabilities > 0){
-    			rerun+=1;
-    		}
-    	}
-    }
-
-    printf("Player %d \n", i+1);
-    printf("Dexterity: %d \n", players[i].dexterity);
-    printf("Intelligence: %d \n", players[i].intelligence);
-    printf("Luck: %d \n", players[i].luck);
-    printf("Magic: %d \n", players[i].magic);
-    printf("Strength: %d \n", players[i].strength);
-    printf("Total Stats: %d \n", players[i].capabilities);
-    i++;
-
-
+	printf("Player %d \n", count+1);
+	printf("Dexterity: %d \n", players[count].dexterity);
+	printf("Intelligence: %d \n", players[count].intelligence);
+	printf("Luck: %d \n", players[count].luck);
+	printf("Magic: %d \n", players[count].magic);
+	printf("Strength: %d \n", players[count].strength);
+	printf("Total Stats: %d \n", players[count].capabilities);
+	puts("");
 }
+
+void elf(int count){
+	int rerun=0;
+	while(rerun<1){
+		//dexterity
+		players[count].dexterity = (rand() % 101);
+		//intelligence
+		players[count].intelligence = (rand() % 31)+70;
+		//luck
+		players[count].luck = (rand() % 41)+60;
+		//magic
+		players[count].magic = (rand() % 29)+51;
+		//strength
+		players[count].strength = (rand() % 51);
+
+		players[count].capabilities = players[count].dexterity + players[count].intelligence + players[count].luck + players[count].magic + players[count].strength;
+
+		if(players[count].capabilities>0){
+			rerun+=1;
+		}
+	}
+}
+
+void human(int count){
+	int rerun=0;
+	while(rerun<1){
+		//dexterity
+		players[count].dexterity = (rand() % 101);
+		//intelligence
+		players[count].intelligence = (rand() % 101);
+		//luck
+		players[count].luck = (rand() % 101);
+		//magic
+		players[count].magic = (rand() % 101);
+		//strength
+		players[count].strength = (rand() % 101);
+
+		players[count].capabilities = players[count].dexterity + players[count].intelligence + players[count].luck + players[count].magic + players[count].strength;
+
+		if(players[count].capabilities > 0 && players[count].capabilities < 300){
+			rerun+=1;
+		}
+	}
+}
+
+void ogre(int count){
+	int rerun=0;
+	int luckIntcheck=0;
+
+	while(rerun<1){
+		//dexterity
+		players[count].dexterity = (rand() % 21)+80;
+		//intelligence
+		players[count].intelligence = (rand() % 21);
+		//luck
+		players[count].luck = (rand() % 100)+80;
+		//magic
+		players[count].magic = 0;
+		//strength
+		players[count].strength = (rand() % 101);
+
+		players[count].capabilities = players[count].dexterity + players[count].intelligence + players[count].luck + players[count].magic + players[count].strength;
+
+		luckIntcheck= players[count].intelligence + players[count].luck;
+
+		if(players[count].capabilities > 0 && luckIntcheck < 51){
+			rerun+=1;
+		}
+	}
+}
+
+void wizard(int count){
+	int rerun=0;
+
+    while(rerun<1){
+        //dexterity
+        players[count].dexterity = (rand() % 101);
+        //intelligence
+        players[count].intelligence = (rand() % 10)+90;
+        //luck
+        players[count].luck = (rand() % 50)+50;
+        //magic
+        players[count].magic = (rand() % 20)+80;
+        //strength
+        players[count].strength = (rand() % 20);
+
+        players[count].capabilities = players[count].dexterity + players[count].intelligence + players[count].luck + players[count].magic + players[count].strength;
+
+        if(players[count].capabilities > 0){
+            rerun+=1;
+        }
+    }
+}
+
 #endif

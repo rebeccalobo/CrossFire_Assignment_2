@@ -10,18 +10,23 @@ void capabilities(int count);
 
 int main(){
 
-	int player_cnt, slot_cnt, i;
+	int player_cnt=0, slot_cnt=0, i;
 	int lifepts = 100;
 	int Opt_class = 0;
 
 	struct player p;
 
-	printf("Please enter the number of players between 1-10: ");
+	printf("Please enter the number of players between 1-6: ");
 	fflush(stdout);
-	scanf("%d", &player_cnt);
+	while(player_cnt<1 || player_cnt>6){
+		scanf("%d", &player_cnt);
+	}
+
 	printf("Please enter the number of board slots you would like between 1-20: ");
 	fflush(stdout);
-	scanf("%d", &slot_cnt);
+	while(slot_cnt<1 || slot_cnt>20){
+		scanf("%d", &slot_cnt);
+	}
 
 	p.playersize=player_cnt;
 
@@ -79,10 +84,8 @@ int main(){
 		capabilities(i);
 	}
 
-	/*slot_type(slot_cnt);
+	slot_type(slot_cnt);
 	slot_assign(slot_cnt, player_cnt, players);
-
-
 
 	for(i=0;i<player_cnt;++i){
 		puts("");
@@ -122,9 +125,7 @@ int main(){
 
 
 		puts("");
-	}*/
-
-
+	}
 
 	return 0;
 }
