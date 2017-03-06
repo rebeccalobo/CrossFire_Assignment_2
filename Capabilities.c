@@ -2,14 +2,13 @@
 #define CAPABILITIES_H
 
 #include <stdio.h>
-#include <struct.h>
 #include "struct.h"
 #include <stdlib.h>
 #include <time.h>
 #include "slot.h"
 
 void capabilities(int i){
-	struct players p;
+	
     int rerun=0;
     int luckIntcheck=0;
     srand(time(NULL));
