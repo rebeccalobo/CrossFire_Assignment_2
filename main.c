@@ -10,17 +10,26 @@
 
 int main(){
 
-	int playersize, i;
+	int player_cnt, slot_cnt, i;
 
-	int Opt = 0;
+	int Opt_class = 0;
+
 
 	printf("Please enter the number of players:\n");
 	fflush(stdout);
-	scanf("%d", &playersize);
+	printf("NB: You can only have a maximum of 6 players.\n");
+	fflush(stdout);
+	scanf("%d", &player_cnt);
+	printf("Please enter the number of board slots you would like:\n");
+	fflush(stdout);
+	printf("NB: You can only have a maximum of 20 slots.\n");
+	fflush(stdout);
+	scanf("%d", &slot_cnt);
 
 
 
-	for(i=0;i<playersize;i++){
+
+	for(i=0;i<player_cnt;i++){
 
 
     printf("Please enter your names:");
@@ -35,8 +44,8 @@ int main(){
 	printf("3- Wizard.\n");
 	fflush(stdout);
 
-	scanf("%d", &Opt);
-	switch(Opt){
+	scanf("%d", &Opt_class);
+	switch(Opt_class){
 	case (0):{ players[i].class = 0;
 	break;}
 	case (1):{ players[i].class = 1;
@@ -49,9 +58,14 @@ int main(){
 
 	}
 
+	slot_type(slot_cnt);
+	slot_assign(slot_cnt, player_cnt, players);
+
+
+
 	int lifepts = 100;
 
-	for(i=0;i<playersize;++i){
+	for(i=0;i<player_cnt;++i){
 		puts("");
 		printf("Player %d -> %s \n", i+1, players[i].playername);
 
@@ -71,8 +85,29 @@ int main(){
 			printf("(Wizard , %d)\n", lifepts);
 			fflush(stdout);
 		}
+
+
+
+		printf("%s is at %d ->", players[i].playername, players[i].slotNum);
+
+		if(players[i].type == LevelGround){
+			printf("  Level Ground\n");
+		}
+
+		if(players[i].type == Hill){
+			printf("  Hill\n");
+		}
+		if(players[i].type == City){
+			printf("  City\n");
+		}
+
+
+
+
 		puts("");
 	}
+
+
 
 	return 0;
 }

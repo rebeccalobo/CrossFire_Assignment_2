@@ -1,11 +1,22 @@
+#ifndef STRUCT_H
+#define STRUCT_H
+
+
+
 enum playerclass{
 	Elf, Human, Ogre, Wizard
+};
+
+enum slottype{
+	LevelGround, Hill, City
 };
 
 
 struct player{
 	char playername[20];
 	enum playerclass class;
+	enum slottype type;
+	int  slotNum;
 	int  lifepts;
 	int  intelligence;
 	int  strength;
@@ -14,8 +25,7 @@ struct player{
 
 }players[7];
 
-enum slottype{
-	LevelGround=1, Hill=2, City=3
-};
 
+
+#endif /* relates to STRUCT_H */
 
