@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "slot.h"
+void CAP_CHANGES(int slot_cnt, int player_cnt, struct player players[], int i);
 
 
 
@@ -60,6 +61,7 @@ int main(){
 
 	slot_type(slot_cnt);
 	slot_assign(slot_cnt, player_cnt, players);
+	CAP_CHANGES(slot_cnt, player_cnt, players, i);
 
 
 
@@ -113,26 +115,30 @@ int main(){
 }
 
 
+void CAP_CHANGES(int slot_cnt, int player_cnt, struct player players[], int i){
+
+	while(players[i].type == Hill){
+		if(players[i].dexterity < 50){
+			players[i].strength -= 10;
+		}
 
 
+	else if(players[i].dexterity >= 60 && players[i].strength <=90){
+		players[i].strength += 10;
+	}
 
+	}
 
+	while(players[i].type == City){
 
-
-
-
-	 /* THIS IS THE END OF PART A*/
-
-/*PART B GOES HERE*/
-
-/*THIS IS THE END OF PART B*/
-
-/*PART C STARTS HERE*/
-
-
-
-
-
+		if(players[i].intelligence > 60 && players[i].magic <=90){
+			players[i].magic += 10;
+		}
+		else if(players[i].intelligence <= 50){
+			players[i].dexterity -= 10;
+		}
+	}
+}
 
 
 
