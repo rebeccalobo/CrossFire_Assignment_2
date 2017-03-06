@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "slot.h"
+#include "capabilities.h"
 
 void capabilities(int count);
 
