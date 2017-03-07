@@ -29,7 +29,7 @@ int main(){
 		scanf("%d", &slot_cnt);
 	}
 
-	p.playersize=player_cnt;
+	playersize=player_cnt;
 
 
 	for(i=0;i<player_cnt;i++){

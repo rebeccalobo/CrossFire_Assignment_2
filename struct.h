@@ -9,6 +9,8 @@ enum slottype{
 	LevelGround, Hill, City
 };
 
+int playersize=0;
+
 
 struct player{
 	char playername[20];
