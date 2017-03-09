@@ -1,15 +1,15 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-enum playerclass{
+enum playerclass{ /* all the class types for this game are declared in an enum function*/
 	Elf, Human, Ogre, Wizard
 };
 
-enum slottype{
+enum slottype{ /* all the slot types for this game are declared in an enum function*/
 	LevelGround, Hill, City
 };
 
-struct player{
+struct player{ /* this struct allows the information (in the form of characters, integers and enumerations) to be declared here and has been called upon by functions in main.c*/
 	char playername[20];
 	enum playerclass class;
 	enum slottype type;
@@ -23,7 +23,7 @@ struct player{
 	int dexterity;
 	int playersize;
 	int distance;
-}players[7];
+}players[7]; /* an array size of 7 has been initialised for the number of players within it*/
 
 
 
