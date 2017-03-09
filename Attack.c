@@ -1,3 +1,6 @@
+#ifndef ATTACK_H
+#define ATTACK_H
+
 #include <stdio.h>
 #include "struct.h"
 #include <stdlib.h>
@@ -65,3 +68,5 @@ void attack(int no, int playersize){
 		i++;
 	}
 }
+
+#endif
