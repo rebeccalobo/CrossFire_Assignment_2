@@ -4,18 +4,16 @@
 #include "struct.h"
 #include <stdlib.h>
 #include <math.h>
-#include "slot.h"
-#include "capabilities.h"
 
 void capabilities(int count);
+void slot_type(int slot_cnt);
+void slot_assign(int slot_cnt, int player_cnt);
+//void move();
 
 int main(){
-
 	int player_cnt=0, slot_cnt=0, i;
 	int lifepts = 100;
 	int Opt_class = 0;
-
-	struct player p;
 
 	printf("Please enter the number of players between 1-6: ");
 	fflush(stdout);
@@ -28,9 +26,6 @@ int main(){
 	while(slot_cnt<1 || slot_cnt>20){
 		scanf("%d", &slot_cnt);
 	}
-
-	playersize=player_cnt;
-
 
 	for(i=0;i<player_cnt;i++){
 		Opt_class=0;
@@ -69,24 +64,11 @@ int main(){
 					printf("(Wizard , %d)\n", lifepts);
 					fflush(stdout);
 				}
-
-				printf("%s is at %d ->", players[i].playername, players[i].slotNum);
-
-				if(players[i].type == LevelGround){
-					printf("  Level Ground\n");
-				}
-
-				if(players[i].type == Hill){
-					printf("  Hill\n");
-				}
-				if(players[i].type == City){
-					printf("  City\n");
-				}
-		capabilities(i);
+		capabilities(Opt_class);
 	}
 
 	slot_type(slot_cnt);
-	slot_assign(slot_cnt, player_cnt, players);
+	slot_assign(slot_cnt, player_cnt);
 
 	for(i=0;i<player_cnt;++i){
 		puts("");
@@ -121,10 +103,6 @@ int main(){
 		if(players[i].type == City){
 			printf("  City\n");
 		}
-
-
-
-
 		puts("");
 	}
 

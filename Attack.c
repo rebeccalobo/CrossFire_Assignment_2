@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void attack(int no){
+void attack(int no, int playersize){
 	int plarray[playersize][3];
 	int i=0;
 	int store=0;

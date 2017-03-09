@@ -5,7 +5,6 @@
 #include "struct.h"
 #include <stdlib.h>
 #include <time.h>
-#include "slot.h"
 
 void elf(int count);
 void human(int count);
@@ -16,17 +15,17 @@ void capabilities(int count){
 	srand(time(NULL));
     
 	//Elf
-		if(players[count].class == 1){
+		if(count == 0){
 			elf(count);
 		}
 
 	//Human
-		else if(players[count].class == 2){
+		else if(count == 1){
 			human(count);
 		}
 
 	//Ogre
-		else if(players[count].class == 3){
+		else if(count == 2){
 			ogre(count);
 		}
 
@@ -35,7 +34,6 @@ void capabilities(int count){
 			wizard(count);
 		}
 
-	printf("Player %d \n", count+1);
 	printf("Dexterity: %d \n", players[count].dexterity);
 	printf("Intelligence: %d \n", players[count].intelligence);
 	printf("Luck: %d \n", players[count].luck);
@@ -95,7 +93,7 @@ void ogre(int count){
 
 	while(rerun<1){
 		//dexterity
-		players[count].dexterity = (rand() % 21)+80;
+		players[count].dexterity = (rand() % 20)+80;
 		//intelligence
 		players[count].intelligence = (rand() % 20)+1;
 		//luck
