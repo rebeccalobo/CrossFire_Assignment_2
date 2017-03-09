@@ -4,7 +4,12 @@
 #include "struct.h"
 #include <stdlib.h>
 #include <math.h>
+#include "slot.h"
+#include "attack.h"
+#include "capabilities.h"
 
+
+void CAP_CHANGES(int slot_cnt, int player_cnt, struct player players[], int i);
 void capabilities(int count);
 void slot_type(int slot_cnt);
 void slot_assign(int slot_cnt, int player_cnt);
@@ -69,6 +74,7 @@ int main(){
 
 	slot_type(slot_cnt);
 	slot_assign(slot_cnt, player_cnt);
+	CAP_CHANGES(slot_cnt, player_cnt, players, i);
 
 	for(i=0;i<player_cnt;++i){
 		puts("");
@@ -107,4 +113,28 @@ int main(){
 	}
 
 	return 0;
+}
+
+void CAP_CHANGES(int slot_cnt, int player_cnt, struct player players[], int i){
+
+	while(players[i].type == Hill){
+		if(players[i].dexterity < 50){
+			players[i].strength -= 10;
+		}
+
+		else if(players[i].dexterity >= 60 && players[i].strength <=90){
+	 		players[i].strength += 10;
+	 	}
+	}
+
+	while(players[i].type == City){
+		if(players[i].intelligence > 60 && players[i].magic <=90){
+			players[i].magic += 10;
+		}
+
+		else if(players[i].intelligence <= 50){
+			players[i].dexterity -= 10;
+		}
+
+	}
 }
