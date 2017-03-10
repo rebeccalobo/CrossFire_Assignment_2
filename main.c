@@ -10,7 +10,7 @@
 //#include "capabilities.h"
 
 /* functions are initialized which need variables such as slot and player counting from the header files*/
-void capabilities(int count);
+void capabilities(int count, int i);
 void slot_type(int slot_cnt);
 void slot_assign(int slot_cnt, int player_cnt);
 int attack(int no, int playersize, int remainingplayers);
@@ -19,10 +19,6 @@ void movement(int i, int direction);
 int main(){
 	int player_cnt=0, slot_cnt=0, i;
 	int Opt_class = 0;
-	//Assign temps for later use in ensure capabilities outside boundaries are not reached.
-	players[i].dextemp=0;
-	players[i].strtemp=0;
-	players[i].magtemp=0;
 
 	printf("Please enter the number of players between 1-6: "); /* program is asking the user the name of players he/she wants in the game*/
 	fflush(stdout);
@@ -30,13 +26,17 @@ int main(){
 		scanf("%d", &player_cnt);
 	}
 
-	printf("Please enter the number of board slots you would like between 1-20: "); /* the program allows the user the make the decision on how big the board game is*/
+	printf("Please enter the number of board slots you would like between %d-20: ", player_cnt); /* the program allows the user the make the decision on how big the board game is*/
 	fflush(stdout);
-	while(slot_cnt<1 || slot_cnt>20){ //Make sure the player chooses a valid number of slots
+	while(slot_cnt<player_cnt || slot_cnt>20){ //Make sure the player chooses a valid number of slots
 		scanf("%d", &slot_cnt);
 	}
 
 	for(i=0;i<player_cnt;i++){
+		//Assign temps for later use in ensure capabilities outside boundaries are not reached.
+		players[i].dextemp=0;
+		players[i].strtemp=0;
+		players[i].magtemp=0;
 		Opt_class=0;
 	    printf("Player %d Please enter your name: ", i+1); /* as the number of players is being incremented to the user's max number, the names of the players are being assigned to each number and stored within an array*/
 		fflush(stdout);
@@ -73,7 +73,7 @@ int main(){
 					printf("(Wizard , %0.0f)\n", players[i].lifepts);
 					fflush(stdout);
 				}
-			capabilities(Opt_class); /* Calling the capabilities function to print out each player's abilities*/
+			capabilities(Opt_class, i); /* Calling the capabilities function to print out each player's abilities*/
 	}
 
 	/*This section of code allows me to assign a specific starting slot to each player and change their abilities depending on which slot they move to next*/
@@ -103,14 +103,14 @@ int main(){
 
 		printf("%s is at %d ->", players[i].playername, players[i].slotNum);
 
-		if(players[i].type == LevelGround){ /* prints the type of slot according to the slottype enumeration in struct.h*/
+		if(slots[players[i].slotNum].slot == LevelGround){ /* prints the type of slot according to the slottype enumeration in struct.h*/
 			printf("  Level Ground\n");
 		}
 
-		if(players[i].type == Hill){
+		if(slots[players[i].slotNum].slot == Hill){
 			printf("  Hill\n");
 		}
-		if(players[i].type == City){
+		if(slots[players[i].slotNum].slot == City){
 			printf("  City\n");
 		}
 		puts("");
@@ -146,7 +146,7 @@ int main(){
 							action=0;
 						}
 						else{
-							//Call the movement funtion
+							//Call the movement function
 							movement(i, action);
 						}
 					}

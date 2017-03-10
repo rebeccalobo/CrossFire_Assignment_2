@@ -19,15 +19,15 @@ void movement(int i, int direction){
 	}
 
 	//Print which area the player is in
-	if(players[i].type == LevelGround){
+	if(slots[players[i].slotNum].slot == LevelGround){
 		printf("  Level Ground\n");
 	}
 
-	if(players[i].type == Hill){
-		printf("  Hill\n");
+	if(slots[players[i].slotNum].slot == Hill){
+		printf("  Hill\n\n");
 	}
-	if(players[i].type == City){
-		printf("  City\n");
+	if(slots[players[i].slotNum].slot == City){
+		printf("  City\n\n");
 	}
 	//Call the function to check if any effects need to be removed or applied
 	CAP_CHANGES(i);

@@ -28,7 +28,6 @@ int attack(int no, int playersize, int remainingplayers){
 		if(plarray[i][2] < 0){
 			plarray[i][2] = -1*plarray[i][2];
 		}
-		printf("%d", plarray[i][2]);
 		i++;
 	}
 
@@ -38,7 +37,7 @@ int attack(int no, int playersize, int remainingplayers){
 	//Find the closest player/s to the attacker
 	while(i<playersize){
 		//also make sure not to check the distance from the attacker to the attacker (i != no)
-		if(smallestdist > plarray[i][2] && i != no){
+		if(smallestdist > plarray[i][2] && i != no && players[i].lifepts > 0){
 			smallestdist = plarray[i][2];
 		}
 		i++;
@@ -50,7 +49,7 @@ int attack(int no, int playersize, int remainingplayers){
 	//See if any players at same distance
 	//Since players same distance from attacker both get attacked
 	while(i<playersize){
-		if(smallestdist == plarray[i][2]){
+		if(smallestdist == plarray[i][2] && players[i].lifepts > 0 && i != no){
 			//Store who is closest in array in case of multiple
 			array[count]=plarray[i][0];
 			count++;
@@ -58,7 +57,7 @@ int attack(int no, int playersize, int remainingplayers){
 		i++;
 	}
 
-	int damage=0;
+	float damage = 0;
 	//Calculate attack
 	if(players[no].strength >= 70){
 		damage = 0.5*players[no].strength;

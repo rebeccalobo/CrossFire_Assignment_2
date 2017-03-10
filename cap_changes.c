@@ -22,7 +22,7 @@ void CAP_CHANGES(int i){ /* including the content of the function which allows a
 			//Let Heffect=1 so we know not to re-apply the effect
 			players[i].Heffect = 1;
 			//Print the new strength
-			printf("%s's strength is now %d\n", players[i].playername, players[i].strength);
+			printf("%s's strength is now %0.0f\n", players[i].playername, players[i].strength);
 		}
 
 		else if(players[i].dexterity >= 60 && players[i].Heffect == 0){
@@ -36,7 +36,7 @@ void CAP_CHANGES(int i){ /* including the content of the function which allows a
 				players[i].strength += 10;
 			}
 			players[i].Heffect = 1;
-			printf("%s's strength is now %d\n", players[i].playername, players[i].strength);
+			printf("%s's strength is now %0.0f\n", players[i].playername, players[i].strength);
 	 	}
 
 		//Remove old effects which no longer apply
