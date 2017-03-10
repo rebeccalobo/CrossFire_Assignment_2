@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+//Declare functions
 void elf(int count);
 void human(int count);
 void ogre(int count);
@@ -13,6 +14,7 @@ void wizard(int count);
 
 void capabilities(int count){
 	srand(time(NULL));
+	//I used 1-100 instead of 0-100 for player capabilities, as a player with 0 attack cannot win, whereas a player with 1 at least has a slight chance
     
 	//Elf
 		if(count == 0){
@@ -34,6 +36,7 @@ void capabilities(int count){
 			wizard(count);
 		}
 
+	//Print stats
 	printf("Dexterity: %d \n", players[count].dexterity);
 	printf("Intelligence: %d \n", players[count].intelligence);
 	printf("Luck: %d \n", players[count].luck);
@@ -43,6 +46,7 @@ void capabilities(int count){
 	puts("");
 }
 
+//Each function generates random values based on the given parameters in the question
 void elf(int count){
 	int rerun=0;
 	while(rerun<1){

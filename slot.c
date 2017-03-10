@@ -9,8 +9,6 @@
 #include <math.h>
 #include <time.h>
 
-
-
 void slot_type(int slot_cnt);
 void slot_assign(int slot_cnt, int player_cnt);
 

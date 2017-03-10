@@ -14,7 +14,7 @@ struct player{ /* this struct allows the information (in the form of characters,
 	enum playerclass class;
 	enum slottype type;
 	int  slotNum;
-	int  lifepts;
+	float  lifepts;
 	int capabilities;
 	int  intelligence;
 	int  strength;
@@ -22,7 +22,15 @@ struct player{ /* this struct allows the information (in the form of characters,
 	int luck;
 	int dexterity;
 	int playersize;
+	//Check to see who is closest to the attacking player
 	int distance;
+	//Used to check if player is impacted by Hill or City effect
+	int Heffect;
+	int Ceffect;
+	//Used to ensure capabilties do not exceed max or min
+	int dextemp;
+	int strtemp;
+	int magtemp;
 }players[7]; /* an array size of 7 has been initialised for the number of players within it*/
 
 
