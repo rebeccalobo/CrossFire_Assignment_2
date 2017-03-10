@@ -4,10 +4,15 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include "struct.h"
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include "struct.h"
+#include "capabilities.h"
+#include "slot.h"
+#include "movement.h"
+#include "cap_changes.h"
+#include "attack.h"
 
 void slot_type(int slot_cnt, char slotArr[100][20]);
 void slot_assign(int slot_cnt, int player_cnt, char slotArr[100][20]);
@@ -77,3 +82,4 @@ void slot_assign(int slot_cnt, int player_cnt, char slotArr[100][20]){
 
 
 #endif /* relates to SLOT_H */
+
